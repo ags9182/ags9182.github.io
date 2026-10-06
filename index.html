@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fff5de">
+<title>Adrian Smith — Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>(function(){var d=document.documentElement;try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('js');window.__RV_SELECTORS=".hero__title, .hero__intro, .hero .cta, .work__title, .cs__date, .cs__title, .cs__desc, .cs__tags, .case__col > *, .case__caption, .footer__title, .footer__ask, .footer__links, .footer__copy";setTimeout(function(){if(!window.__rv)d.classList.remove('js')},5000);}}catch(e){}})();</script>
+</head>
+<body>
+
+<header class="navbar"><div class="navbar__inner">
+  <a class="navbar__logo" href="#">[AS]</a>
+  <nav class="navbar__tabs" aria-label="Primary">
+    <a class="tab tab--work"   href="#work"   aria-label="Work"><img src="assets/tab_work.svg" alt=""></a>
+    <a class="tab tab--play"   href="play.html"   aria-label="Play"><img src="assets/tab_play.svg" alt=""></a>
+    <a class="tab tab--about"  href="about.html"  aria-label="About"><img src="assets/tab_about.svg" alt=""></a>
+    <a class="tab tab--resume" href="resume.html" aria-label="Resume"><img src="assets/tab_resume.svg" alt=""></a>
+  </nav>
+</div></header>
+
+<main>
+  <section class="hero" aria-label="Introduction"><div class="hero__inner">
+    <div class="hero__copy">
+      <div class="hero__title">
+        <img class="hero__burst" src="assets/starburst.svg" alt="">
+        <h1 class="hero__name" aria-label="Adrian Smith, designer, maker, thinker and creative"><span aria-hidden="true">A<span class="w4">d</span>r<span class="w3">i</span>a<span class="w5">n</span><br>S<span class="w5">m</span><span class="w3">i</span>t<span class="w5">h</span></span></h1>
+        <div class="hero__tag" id="tag" aria-hidden="true"><span id="tag-text">designer!</span></div>
+      </div>
+      <p class="hero__intro">Hey there! I'm a designer and creative, working to create new and emerging media with my skills in UI/UX and a special passion for motion graphics.</p>
+      <a class="cta" id="cta" href="#work"><span class="cta__pill">Check it out!</span><img class="cta__arrow" src="assets/small_arrow.svg" alt=""></a>
+    </div>
+
+    <div class="hero__reel">
+      <video id="reel" src="assets/motion-reel.mp4" poster="assets/reel-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Motion reel"></video>
+    </div>
+
+    <img class="hero__sparkles" src="assets/sparkles.svg" alt="">
+    <img class="hero__sparkles hero__sparkles--h" src="assets/sparkles-horizontal.svg" alt="">
+  </div></section>
+
+  <section class="work" id="work" aria-labelledby="work-title"><div class="work__inner">
+    <div class="work__squiggle" aria-hidden="true"><img src="assets/border-element.svg" alt=""></div>
+    <h2 class="work__title" id="work-title"><span>* My </span><span class="r">Work</span><span class="bang">!</span></h2>
+    <article class="cs cs--link">
+      <div class="cs__media cs__media--photo"><img class="cs__photo" src="assets/ace-attorney.png" alt="Ace Attorney title sequence frame" onerror="this.remove()"></div>
+      <div class="cs__text">
+        <p class="cs__date">2025–2026</p>
+        <h3 class="cs__title"><a class="cs__link" href="ace-attorney.html" data-pt="ace-attorney">Ace Attorney Title Sequence</a></h3>
+        <p class="cs__desc">Animated motion-graphics title sequence based off of game “Ace Attorney”, created in Adobe After Effects.</p>
+        <ul class="cs__tags"><li>MOTION GRAPHICS</li><li>ANIMATION</li><li>3D INTEGRATION</li></ul>
+      </div>
+    </article>
+    <article class="cs">
+      <div class="cs__text">
+        <p class="cs__date">2025</p>
+        <h3 class="cs__title">Case Study 02 — Project Name</h3>
+        <p class="cs__desc">A short paragraph about the problem, your role, and the outcome goes here. Swap this out with the real story whenever it is ready.</p>
+        <ul class="cs__tags"><li>MOTION</li><li>BRAND</li></ul>
+      </div>
+      <div class="cs__media cs__media--purple"><img class="cs__star" src="assets/star-white.svg" alt=""></div>
+    </article>
+    <article class="cs">
+      <div class="cs__media cs__media--yellow"><img class="cs__star" src="assets/star-white.svg" alt=""></div>
+      <div class="cs__text">
+        <p class="cs__date">2025</p>
+        <h3 class="cs__title">Case Study 03 — Project Name</h3>
+        <p class="cs__desc">A short paragraph about the problem, your role, and the outcome goes here. Swap this out with the real story whenever it is ready.</p>
+        <ul class="cs__tags"><li>UI/UX</li><li>PROTOTYPING</li></ul>
+      </div>
+    </article>
+    <article class="cs">
+      <div class="cs__text">
+        <p class="cs__date">2025</p>
+        <h3 class="cs__title">Case Study 04 — Project Name</h3>
+        <p class="cs__desc">A short paragraph about the problem, your role, and the outcome goes here. Swap this out with the real story whenever it is ready.</p>
+        <ul class="cs__tags"><li>MOTION</li><li>BRAND</li></ul>
+      </div>
+      <div class="cs__media cs__media--blue"><img class="cs__star" src="assets/star-white.svg" alt=""></div>
+    </article>
+  </div></section>
+</main>
+
+<footer class="footer">
+  <img class="footer__wave" src="assets/footer-wave.svg" alt="">
+  <div class="footer__inner">
+    <h2 class="footer__title">Do you like what you see?</h2>
+    <p class="footer__ask">let’s work together! <span class="footer__smiley"><img src="assets/smiley.svg" alt=""></span></p>
+    <nav class="footer__links" aria-label="Contact and social links">
+      <a href="https://www.linkedin.com/in/emadriansmith" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/adrian.s.design/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://vimeo.com/adriansdesign" target="_blank" rel="noopener">Vimeo</a>
+      <a href="mailto:e.adriansdesign@gmail.com">Email</a>
+    </nav>
+    <p class="footer__copy">© 2026</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- tagline: designer! → maker! → thinker! → creative! ---- */
+  var words = [
+    {t:'designer!', c:'#87a1ed', r:-4.7},
+    {t:'maker!',    c:'#f7cc8f', r:6.92},
+    {t:'thinker!',  c:'#be94e0', r:-6.29},
+    {t:'creative!', c:'#8a38f5', r:5.42}
+  ];
+  var tag = document.getElementById('tag'), label = document.getElementById('tag-text'), i = 0, timer;
+  function show(n){
+    var w = words[n];
+    tag.style.setProperty('--tag-bg', w.c);
+    tag.style.setProperty('--tag-rot', w.r + 'deg');
+    label.classList.add('is-out');
+    setTimeout(function(){ label.textContent = w.t; label.classList.remove('is-out'); }, 130);
+  }
+  function start(){ stop(); timer = setInterval(function(){ i = (i + 1) % words.length; show(i); }, 2200); }
+  function stop(){ clearInterval(timer); }
+  tag.style.setProperty('--tag-bg', words[0].c); tag.style.setProperty('--tag-rot', words[0].r + 'deg');
+  if (!reduce){
+    start();
+    document.addEventListener('visibilitychange', function(){ document.hidden ? stop() : start(); });
+  }
+
+  /* ---- "Check it out!" pressed state: ink fill + arrow spin (145° → 450°) ---- */
+  var cta = document.getElementById('cta'), t0 = 0, rel;
+  function press(){
+    clearTimeout(rel); cta.classList.remove('is-pressed'); void cta.offsetWidth;
+    cta.classList.add('is-pressed'); t0 = performance.now();
+  }
+  function release(){
+    clearTimeout(rel);
+    rel = setTimeout(function(){ cta.classList.remove('is-pressed'); }, Math.max(0, 620 - (performance.now() - t0)));
+  }
+  cta.addEventListener('pointerdown', press);
+  ['pointerup','pointercancel','pointerleave'].forEach(function(e){ cta.addEventListener(e, release); });
+  cta.addEventListener('keydown', function(e){ if ((e.key === 'Enter' || e.key === ' ') && !e.repeat) press(); });
+  cta.addEventListener('keyup', release);
+  cta.addEventListener('blur', release);
+
+  /* ---- reduced motion: don't autoplay the reel ---- */
+  if (reduce){ var v = document.getElementById('reel'); v.removeAttribute('autoplay'); v.pause(); v.controls = true; }
+})();
+</script>
+<script src="site.js"></script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fff5de">
+<title>Ace Attorney Title Sequence — Adrian Smith</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>(function(){var d=document.documentElement;try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('js');window.__RV_SELECTORS=".hero__title, .hero__intro, .hero .cta, .work__title, .cs__date, .cs__title, .cs__desc, .cs__tags, .case__col > *, .case__caption, .footer__title, .footer__ask, .footer__links, .footer__copy";setTimeout(function(){if(!window.__rv)d.classList.remove('js')},5000);}}catch(e){}})();</script>
+<script>try{if(sessionStorage.getItem('pt-from')&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('pt-in','pt-bg')}}catch(e){}</script>
+</head>
+<body class="case-page">
+<script>
+/* arriving from the home page: the image is already floating in the landing frame; glide it into the video frame */
+(function(){try{
+  if(!document.documentElement.classList.contains('pt-in'))return;
+  var raw=sessionStorage.getItem('pt-from');sessionStorage.removeItem('pt-from');
+  var L=JSON.parse(raw);if(!L||typeof L!=='object')return;
+  var ov=document.createElement('div');ov.className='cs__media cs__media--photo pt-overlay';ov.setAttribute('aria-hidden','true');
+  ov.style.cssText='position:fixed;left:'+L.l+'px;top:'+L.t+'px;width:'+L.w+'px;height:'+L.h+'px;margin:0;z-index:9999;flex:none;aspect-ratio:auto;order:0;border-radius:15px';
+  ov.innerHTML='<img class="cs__photo" src="assets/ace-attorney.png" alt="">';
+  document.body.appendChild(ov);
+  var done=false;
+  function fade(){var f=ov.animate([{opacity:1},{opacity:0}],{duration:300,easing:'ease-out',fill:'forwards'});
+    f.finished.then(function(){ov.remove();document.documentElement.classList.remove('pt-bg');});}
+  function go(){if(done)return;done=true;window.scrollTo(0,0);
+    var fr=document.querySelector('.case__video-frame'),r=fr.getBoundingClientRect(),vh=window.innerHeight;
+    if(r.top<vh*0.8){
+      ov.animate([{left:L.l+'px',top:L.t+'px',width:L.w+'px',height:L.h+'px',borderRadius:'15px'},
+                  {left:r.left+'px',top:r.top+'px',width:r.width+'px',height:r.height+'px',borderRadius:'15px'}],
+                 {duration:650,easing:'cubic-bezier(.65,0,.25,1)',fill:'forwards'}).finished.then(fade,fade);
+    }else{fade();}
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setTimeout(go,120)});}else{setTimeout(go,60);}
+  setTimeout(go,2500);
+}catch(e){}})();
+</script>
+
+<header class="navbar"><div class="navbar__inner">
+  <a class="navbar__logo" href="index.html">[AS]</a>
+  <nav class="navbar__tabs" aria-label="Primary">
+    <a class="tab tab--work"   href="index.html#work"   aria-label="Work"><img src="assets/tab_work.svg" alt=""></a>
+    <a class="tab tab--play"   href="play.html"   aria-label="Play"><img src="assets/tab_play.svg" alt=""></a>
+    <a class="tab tab--about"  href="about.html"  aria-label="About"><img src="assets/tab_about.svg" alt=""></a>
+    <a class="tab tab--resume" href="resume.html" aria-label="Resume"><img src="assets/tab_resume.svg" alt=""></a>
+  </nav>
+</div></header>
+
+<main class="case">
+  <div class="case__wrap">
+
+    <section class="case__intro" aria-labelledby="case-title">
+      <h1 class="case__title" id="case-title">Ace Attorney Title Sequence</h1>
+      <dl class="case__meta">
+        <div class="case__meta-item case__meta-item--start"><dt>DURATION</dt><dd>6 weeks</dd></div>
+        <div class="case__meta-item case__meta-item--mid"><dt>SKILLS</dt><dd>Motion Graphics, Animation, 3D Integration</dd></div>
+        <div class="case__meta-item case__meta-item--end"><dt>TOOLS</dt><dd>Figma, Blender, Illustrator, After Effects</dd></div>
+      </dl>
+      <div class="case__concept">
+        <h2 class="case__h2">Concept</h2>
+        <p class="case__p">Create an original title sequence for a movie, show, or series. The series chosen may be an original concept or something pre-existing.</p>
+      </div>
+    </section>
+
+    <div class="case__video">
+      <div class="case__video-frame">
+        <video controls playsinline preload="metadata" aria-label="Ace Attorney Title Sequence — A. Smith, S. Orlando" poster="assets/ace-attorney-poster.jpg">
+          <source src="assets/ace-attorney-title-sequence.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <section class="case__col case__section" aria-labelledby="goals">
+      <h2 class="case__h2" id="goals">Project Goals</h2>
+      <p class="case__p">The goal we settled on was to create a title sequence of the first game in the Ace Attorney series, inspired by mystery and crime series and shows.</p>
+      <h3 class="case__h3">Background</h3>
+      <p class="case__p">Ace Attorney is a series developed and originally released for the Game Boy Advance in 2001. It follows rookie attorney, Phoenix Wright, who defends his clients accused of murder by looking for the contradictions in testimonies and presenting evidence during trials. The main cast consists of Wright, his assistant and spirit medium Maya Fey, rival prosecutor Miles Edgeworth, and police homicide detective Gumshoe.</p>
+      <h3 class="case__h3">Collaboration</h3>
+      <p class="case__p">I partnered up with friend and classmate Sofia Orlando for this project. I focused mainly on the overall motion design, animation, and 3d integration, while my teammate provided the sketches, vector visuals, and 2d assets.</p>
+    </section>
+
+    <section class="case__col case__section" aria-labelledby="sketches">
+      <h2 class="case__h2" id="sketches">Sketches</h2>
+    </section>
+    <figure class="case__sketches">
+      <div class="case__sketch case__sketch--tall"><img src="assets/sketch-1.png" alt="Hand-drawn storyboard sketches on notebook paper" onerror="this.remove()"></div>
+      <div class="case__sketches-side">
+        <div class="case__sketch case__sketch--wide"><img src="assets/sketch-2.png" alt="Hand-drawn storyboard panels" onerror="this.remove()"></div>
+        <figcaption class="case__p case__caption">Early panel sketches / storyboarding that showcases the overall direction and motion we are were looking to achieve.</figcaption>
+      </div>
+    </figure>
+
+    <section class="case__col case__section" aria-labelledby="moodboard">
+      <h2 class="case__h2" id="moodboard">Moodboard</h2>
+      <p class="case__p">We wanted to reflect both the game’s funny and playful nature as well as its more serious tones, and make a semi-serious, exciting intro, while also keeping it a bit toned down and camp. We referenced show openings like Brooklyn 99, Cowboy Bebop, and Law and Order.</p>
+    </section>
+    <div class="case__moodboard"><img src="assets/moodboard.png" alt="Moodboard collage of show title sequences and stills used as references" onerror="this.remove()"></div>
+
+    <section class="case__col case__section" aria-labelledby="challenges">
+      <h2 class="case__h2" id="challenges">Challenges</h2>
+      <p class="case__p">I had no previous experience using various 3d models in Blender and importing them into After Effects. Many of the file types differed, and needed proper conversion first. This was an incredibly difficult hurdle to cross at first, but after extended research and applying what I’d learned, it ended up working almost seamlessly, and I acquired a new skill.</p>
+    </section>
+
+    <section class="case__col case__section case__section--last" aria-labelledby="outcome">
+      <h2 class="case__h2" id="outcome">Outcome</h2>
+      <p class="case__p">The final animation was the result of lots of hard work and great communication. It is a project we are both very proud of, and it was a lot of fun to create. I definitely feel I came out of this with a strengthened sense of motion, timing, and I learned a ton of transferable knowledge about the bridge between 3d assets and Adobe After Effects!</p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <img class="footer__wave" src="assets/footer-wave.svg" alt="">
+  <div class="footer__inner">
+    <h2 class="footer__title">Do you like what you see?</h2>
+    <p class="footer__ask">let’s work together! <span class="footer__smiley"><img src="assets/smiley.svg" alt=""></span></p>
+    <nav class="footer__links" aria-label="Contact and social links">
+      <a href="https://www.linkedin.com/in/emadriansmith" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/adrian.s.design/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://vimeo.com/adriansdesign" target="_blank" rel="noopener">Vimeo</a>
+      <a href="mailto:e.adriansdesign@gmail.com">Email</a>
+    </nav>
+    <p class="footer__copy">© 2026</p>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>
