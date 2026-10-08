@@ -13,31 +13,7 @@
 <script>try{if(sessionStorage.getItem('pt-from')&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('pt-in','pt-bg')}}catch(e){}</script>
 </head>
 <body class="case-page">
-<script>
-/* arriving from the home page: the image is already floating in the landing frame; glide it into the video frame */
-(function(){try{
-  if(!document.documentElement.classList.contains('pt-in'))return;
-  var raw=sessionStorage.getItem('pt-from');sessionStorage.removeItem('pt-from');
-  var L=JSON.parse(raw);if(!L||typeof L!=='object')return;
-  var ov=document.createElement('div');ov.className='cs__media cs__media--photo pt-overlay';ov.setAttribute('aria-hidden','true');
-  ov.style.cssText='position:fixed;left:'+L.l+'px;top:'+L.t+'px;width:'+L.w+'px;height:'+L.h+'px;margin:0;z-index:9999;flex:none;aspect-ratio:auto;order:0;border-radius:15px';
-  ov.innerHTML='<img class="cs__photo" src="assets/ace-attorney.png" alt="">';
-  document.body.appendChild(ov);
-  var done=false;
-  function fade(){var f=ov.animate([{opacity:1},{opacity:0}],{duration:300,easing:'ease-out',fill:'forwards'});
-    f.finished.then(function(){ov.remove();document.documentElement.classList.remove('pt-bg');});}
-  function go(){if(done)return;done=true;window.scrollTo(0,0);
-    var fr=document.querySelector('.case__video-frame'),r=fr.getBoundingClientRect(),vh=window.innerHeight;
-    if(r.top<vh*0.8){
-      ov.animate([{left:L.l+'px',top:L.t+'px',width:L.w+'px',height:L.h+'px',borderRadius:'15px'},
-                  {left:r.left+'px',top:r.top+'px',width:r.width+'px',height:r.height+'px',borderRadius:'15px'}],
-                 {duration:650,easing:'cubic-bezier(.65,0,.25,1)',fill:'forwards'}).finished.then(fade,fade);
-    }else{fade();}
-  }
-  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setTimeout(go,120)});}else{setTimeout(go,60);}
-  setTimeout(go,2500);
-}catch(e){}})();
-</script>
+<script>try{sessionStorage.removeItem('pt-from')}catch(e){}</script>
 
 <header class="navbar"><div class="navbar__inner">
   <a class="navbar__logo" href="index.html">[AS]</a>

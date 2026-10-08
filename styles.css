@@ -6,6 +6,7 @@
 
 :root{
   --base:0ms;
+  --edge:70px;                /* space between the screen edge and the logo / tabs */
   --blue-dark:#2c3e73;
   --blue-light:#87a1ed;
   --bg-page:#fcfcfc;
@@ -20,20 +21,28 @@
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 html,body{margin:0}
-html{scroll-behavior:smooth}
+html:not(.js){scroll-behavior:smooth}
+html{scroll-padding-top:var(--nav-vis,86px)}
 body{background:var(--bg-page);color:var(--ink);font-family:"DM Sans",system-ui,sans-serif;overflow-x:hidden}
 
 /* ================= header / navbar (139:382) ================= */
-.navbar{background:var(--bg-cream)}
+.navbar{
+  background:var(--bg-cream);position:sticky;top:0;z-index:100;
+  transition:transform .38s cubic-bezier(.2,.7,.2,1);
+}
+/* large screens: the nav scales up together with the hero (--nk is set in site.js, 1 → 1.25) */
+@media (min-width:1100px){.navbar__inner{zoom:var(--nk,1)}}
+@media (max-width:899px){:root{--edge:32px}}
+@media (max-width:640px){:root{--edge:16px}}
 .navbar__inner{
-  position:relative;height:86px;max-width:1440px;margin:0 auto;overflow:hidden;
-  padding:28px 70px 0 max(64px,env(safe-area-inset-left));
+  position:relative;height:86px;width:100%;overflow:hidden;
+  padding:28px calc(var(--edge) / var(--nk,1)) 0;      /* logo + tabs sit --edge (70px) from the screen edges */
 }
 .navbar__logo{
   display:inline-block;font:500 20px/normal "DM Mono",ui-monospace,monospace;letter-spacing:1px;
   color:var(--ink);text-decoration:none;white-space:nowrap;
 }
-.navbar__tabs{position:absolute;right:70px;bottom:0;display:flex;align-items:flex-end}
+.navbar__tabs{position:absolute;right:calc(var(--edge) / var(--nk,1));bottom:0;display:flex;align-items:flex-end}
 .tab{
   --tab-color:#fff;
   position:relative;display:block;width:var(--tw);aspect-ratio:122/66;margin-left:calc(var(--tw) * -0.0656);
@@ -41,8 +50,9 @@ body{background:var(--bg-page);color:var(--ink);font-family:"DM Sans",system-ui,
 }
 .tab:first-child{margin-left:0}
 .tab img{position:absolute;left:0;top:0;width:101.64%;height:100%;max-width:none;display:block}
-.tab::after{ /* fills the gap under a tab while it is lifted */
-  content:"";position:absolute;left:0;right:0;top:100%;height:calc(var(--tw) * .14);background:var(--tab-color);
+.tab::after{ /* fills the gap under a lifted tab; its right edge carries the same 2px cream separator as the tab artwork */
+  content:"";position:absolute;left:0;right:calc(var(--tw) * -.0164);top:calc(100% - 1px);height:calc(var(--tw) * .14 + 1px);
+  background:linear-gradient(to right,var(--tab-color) calc(100% - var(--tw) * .0164),var(--bg-cream) 0);
 }
 .tab:focus-visible,.tab:active{transform:translateY(calc(var(--tw) * -.1148));outline:none}
 @media (hover:hover){.tab:hover{transform:translateY(calc(var(--tw) * -.1148))}}
@@ -52,7 +62,7 @@ body{background:var(--bg-page);color:var(--ink);font-family:"DM Sans",system-ui,
 .tab--resume{--tab-color:#be94e0;z-index:1}
 
 /* ================= hero (139:383) ================= */
-.hero{background:var(--bg-page)}
+.hero{background:var(--bg-page);overflow:hidden}
 .hero__inner{
   --fs:128px;               /* 1em of the title block = the 128px name size in the design */
   --copy-gap:43px;
@@ -131,8 +141,18 @@ body{background:var(--bg-page);color:var(--ink);font-family:"DM Sans",system-ui,
 .hero__sparkles{flex:none;width:48px;height:162px;margin-right:-38px;display:block}
 .hero__sparkles--h{display:none}
 
+/* desktop: hero fills the first screen exactly (window height minus the header, never more).
+   The text block grows only a little (--kc); the motion reel takes all the remaining width/height (--reel-w, set in JS) */
+@media (min-width:1100px){
+  .hero{height:calc(100svh - var(--header-h,86px));min-height:380px;display:flex;align-items:stretch}
+  .hero__inner{flex:1 1 auto;width:100%;max-width:none;height:auto;min-height:0;margin:0;justify-content:center;align-items:center}
+  .hero__copy{zoom:var(--kc,1);margin-right:var(--copy-extra,0px)}   /* extra space between text and reel */
+  .hero__reel{flex:none;width:var(--reel-w,708px)}
+}
+
 /* ================= stacked layout: tablet + phone ================= */
-@media (max-width:1239px){
+@media (max-width:1099px){
+  .hero{min-height:calc(100svh - var(--header-h,86px))}
   .hero__inner{
     --fs:min(128px, calc((100vw - 40px) / 3.3));
     --copy-gap:clamp(24px, 4.5vw, 43px);
@@ -155,10 +175,15 @@ body{background:var(--bg-page);color:var(--ink);font-family:"DM Sans",system-ui,
 @media (max-width:640px){
   .navbar__inner{height:auto;padding:16px 16px 0;display:flex;flex-direction:column;align-items:flex-start;gap:14px}
   .navbar__tabs{position:static;align-self:flex-end}
+  .navbar__logo{line-height:26px}
+  .navbar.is-compact{transform:translateY(-56px)}
   .hero__inner{padding-inline:16px}
   .hero__sparkles--h{right:calc(16px + 4%);bottom:calc(40px + (100vw - 32px) * .5424 - 11px)}
 }
-@media (max-width:640px){ .hero__inner{--fs:min(128px, calc((100vw - 32px) / 3.3))} }
+@media (max-width:640px){
+  .hero__inner{--fs:min(128px, calc((100vw - 32px) / 3.3));--copy-gap:20px;gap:20px;padding-top:calc(var(--fs) * .5 + 6px);padding-bottom:24px}
+  .hero__sparkles--h{bottom:calc(24px + (100vw - 32px) * .5424 - 11px)}
+}
 
 
 /* ================= case studies / "My Work!" (139:397) ================= */
@@ -208,7 +233,7 @@ body{background:var(--bg-page);color:var(--ink);font-family:"DM Sans",system-ui,
 
 /* ================= squiggle divider (hero → work) ================= */
 .work__inner{position:relative}
-.work__squiggle{position:absolute;left:0;right:0;top:-3px;height:24px;overflow:hidden;pointer-events:none}
+.work__squiggle{position:absolute;left:0;right:0;top:0;height:24px;overflow:hidden;pointer-events:none}
 .work__squiggle img{position:absolute;left:50%;top:0;transform:translateX(-50%);width:1293px;height:24px;max-width:none;display:block}
 
 /* ================= footer (139:449) — shared by every page ================= */
@@ -270,7 +295,7 @@ body{background:var(--bg-page);color:var(--ink);font-family:"DM Sans",system-ui,
 
 /* page transition: rest of the page fades while the image grows */
 .pt-overlay{pointer-events:none}
-.pt-leaving body > :not(.pt-overlay){opacity:0;transition:opacity .35s ease .05s}
+.pt-leaving body > :not(.pt-overlay){opacity:0;transition:opacity .4s ease .12s}
 @media (hover:hover){.cs--link:hover .cs__photo{transform:scale(1.035)}}
 @media (prefers-reduced-motion:reduce){.cs__link,.hl-line{transition:none}.cs__media--photo .cs__photo{transition:none}.cs--link:hover .cs__photo{transform:none}}
 
@@ -346,9 +371,9 @@ body{background:var(--bg-page);color:var(--ink);font-family:"DM Sans",system-ui,
 html.pt-bg{background:var(--bg-page)}
 @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:no-preference){
-  .case__title,.case__meta,.case__concept{animation:rise .7s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0) * 90ms + var(--base))}
-  .case__title{--i:0}.case__meta{--i:1}.case__concept{--i:2}
-  html.pt-in{--base:560ms}
+  .case__title,.case__meta,.case__concept,.case__video{animation:rise .7s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0) * 90ms + var(--base))}
+  .case__title{--i:0}.case__meta{--i:1}.case__concept{--i:2}.case__video{--i:3}
+  html.pt-in{--base:150ms}
 }
 
 /* ================= scroll reveal (all pages; only active when JS is running and motion is allowed) ================= */
